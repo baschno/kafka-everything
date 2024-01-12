@@ -45,3 +45,7 @@ sudo ls -l /var/lib/docker/volumes/kafka_0_data/_data/data
 
 kafka-ui   http://localhost:8282
 kpow http://localhost:3000 (license missing)
+
+
+### References
+https://jaehyeon.me/blog/2023-05-18-kafka-development-with-docker-part-2/
