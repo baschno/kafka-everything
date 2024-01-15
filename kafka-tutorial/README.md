@@ -47,5 +47,21 @@ kafka-ui   http://localhost:8282
 kpow http://localhost:3000 (license missing)
 
 
+## Setup Kafkactl
+
+Create config file: `$HOME/.config/kafkactl/config.yml`
+
+### Installation
+#### Mac
+```
+brew tap deviceinsight/packages
+brew install deviceinsight/packages/kafkactl
+```
+
+#### Linux
+Get the `.deb` from the release page and install via `dpkg`
+https://github.com/deviceinsight/kafkactl/releases
+
+
 ### References
 https://jaehyeon.me/blog/2023-05-18-kafka-development-with-docker-part-2/
