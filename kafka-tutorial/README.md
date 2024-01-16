@@ -28,7 +28,7 @@ docker exec -it kafka-0 bash
 cd /opt/bitnami/kafka/bin/
 ## consume messages
 ./kafka-console-consumer.sh \
- --bootstrap-server localhost:9092 --topic orders --from-beginnin
+ --bootstrap-server localhost:9092 --topic orders --from-beginning
 ```
 
 #### Check volumes
@@ -49,7 +49,7 @@ kpow http://localhost:3000 (license missing)
 
 ## Setup Kafkactl
 
-Create config file: `$HOME/.config/kafkactl/config.yml`
+Create config file: `$HOME/.config/kafkactl/config.yml`, see `kafkactl.sample.yaml`
 
 ### Installation
 #### Mac
@@ -62,6 +62,10 @@ brew install deviceinsight/packages/kafkactl
 Get the `.deb` from the release page and install via `dpkg`
 https://github.com/deviceinsight/kafkactl/releases
 
+#### Test setup
+```
+kafkactl list brokers
+```
 
 ### References
 https://jaehyeon.me/blog/2023-05-18-kafka-development-with-docker-part-2/
