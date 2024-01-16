@@ -3,7 +3,7 @@ version: "3.5"
 
 services:
   zookeeper:
-    image: bitnami/zookeeper:3.8.3
+    image: bitnami/zookeeper:$ZK_VERSION
     container_name: zookeeper
     ports:
       - "2181"
@@ -15,7 +15,7 @@ services:
       - zookeeper_data:/bitnami/zookeeper
   kafka-0:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-1
+    container_name: kafka-0
     expose:
       - 9092
     ports:
@@ -32,11 +32,12 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
       - kafka_101_data:/bitnami/kafka
+      - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
   kafka-1:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-2
+    container_name: kafka-1
     expose:
       - 9092
     ports:
@@ -53,11 +54,12 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
       - kafka_102_data:/bitnami/kafka
+      - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
   kafka-2:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-3
+    container_name: kafka-2
     expose:
       - 9092
     ports:
@@ -74,6 +76,7 @@ services:
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
       - kafka_103_data:/bitnami/kafka
+      - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
 

@@ -67,5 +67,29 @@ https://github.com/deviceinsight/kafkactl/releases
 kafkactl list brokers
 ```
 
+## Config
+### Change replication factor
+
+#### Using Kafka Tooling
+
+Running python-producer will create a topic `orders` w/o replication.
+
+
+```
+docker exec -it kafka-0 /bin/bash
+/opt/bitnami/kafka/bin$ ./kafka-reassign-partitions.sh --bootstrap-server kafka-0:9092 --reassignment-json-file /opt/transfer/repl-fac.json --execute
+```
+
+Verify
+```
+./kafka-reassign-partitions.sh --bootstrap-server kafka-0:9092 --reassignment-json-file /opt/transfer/repl-fac.json --verify
+Status of partition reassignment:
+Reassignment of partition orders-0 is completed.
+
+Clearing broker-level throttles on brokers 101,102,103
+Clearing topic-level throttles on topic orders
+```
+
+
 ### References
 https://jaehyeon.me/blog/2023-05-18-kafka-development-with-docker-part-2/

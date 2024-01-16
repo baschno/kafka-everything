@@ -1,0 +1,1 @@
+"version":1,"partitions":[{"topic":"orders","partition":0,"replicas":[103],"log_dirs":["any"]}]}
