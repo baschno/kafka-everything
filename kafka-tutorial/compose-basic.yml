@@ -15,7 +15,7 @@ services:
       - zookeeper_data:/bitnami/zookeeper
   kafka-0:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-0
+    container_name: kafka-1
     expose:
       - 9092
     ports:
@@ -25,18 +25,18 @@ services:
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_BROKER_ID=0
+      - KAFKA_CFG_BROKER_ID=101
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=INTERNAL://:9092,EXTERNAL://:29092
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-0:9092,EXTERNAL://localhost:29092
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
-      - kafka_0_data:/bitnami/kafka
+      - kafka_101_data:/bitnami/kafka
     depends_on:
       - zookeeper
   kafka-1:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-1
+    container_name: kafka-2
     expose:
       - 9092
     ports:
@@ -46,18 +46,18 @@ services:
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_BROKER_ID=1
+      - KAFKA_CFG_BROKER_ID=102
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=INTERNAL://:9092,EXTERNAL://:29093
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-1:9092,EXTERNAL://localhost:29093
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
-      - kafka_1_data:/bitnami/kafka
+      - kafka_102_data:/bitnami/kafka
     depends_on:
       - zookeeper
   kafka-2:
     image: bitnami/kafka:$KAFKA_VERSION
-    container_name: kafka-2
+    container_name: kafka-3
     expose:
       - 9092
     ports:
@@ -67,13 +67,13 @@ services:
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_BROKER_ID=2
+      - KAFKA_CFG_BROKER_ID=103
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=INTERNAL://:9092,EXTERNAL://:29094
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka-2:9092,EXTERNAL://localhost:29094
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INTERNAL
     volumes:
-      - kafka_2_data:/bitnami/kafka
+      - kafka_103_data:/bitnami/kafka
     depends_on:
       - zookeeper
 
@@ -85,12 +85,12 @@ volumes:
   zookeeper_data:
     driver: local
     name: zookeeper_data
-  kafka_0_data:
+  kafka_101_data:
     driver: local
-    name: kafka_0_data
-  kafka_1_data:
+    name: kafka_101_data
+  kafka_102_data:
     driver: local
-    name: kafka_1_data
-  kafka_2_data:
+    name: kafka_102_data
+  kafka_103_data:
     driver: local
-    name: kafka_2_data
+    name: kafka_103_data
