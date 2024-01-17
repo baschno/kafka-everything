@@ -13,6 +13,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:
       - zookeeper_data:/bitnami/zookeeper
+    restart: unless-stopped
   kafka-0:
     image: bitnami/kafka:$KAFKA_VERSION
     container_name: kafka-0
@@ -35,6 +36,7 @@ services:
       - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
+    restart: unless-stopped
   kafka-1:
     image: bitnami/kafka:$KAFKA_VERSION
     container_name: kafka-1
@@ -57,6 +59,7 @@ services:
       - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
+    restart: unless-stopped
   kafka-2:
     image: bitnami/kafka:$KAFKA_VERSION
     container_name: kafka-2
@@ -79,6 +82,7 @@ services:
       - ./transfer:/opt/transfer
     depends_on:
       - zookeeper
+    restart: unless-stopped
 
 networks:
   kafkanet:
